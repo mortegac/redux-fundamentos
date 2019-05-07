@@ -1,0 +1,3 @@
+export const FILTERS_CLEAN = 'FILTERS_CLEAN';
+export const FILTERS_ADD = 'FILTERS_ADD';
+export const FILTERS_FAILED = 'FILTERS_FAILED';

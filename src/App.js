@@ -1,26 +1,47 @@
-import React from 'react';
+/* eslint-disable no-useless-constructor */
+import React, {Component} from 'react';
+import { connect } from 'react-redux';
 import logo from './logo.svg';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+// import { errorsClean, fetchData } from './store/errors/Actions';
+import { fetchData } from './store/users/Actions';
 
-export default App;
+
+export class App extends Component {
+	constructor(props) {
+    super(props);
+    const {fetchData } = this.props;
+    
+    fetchData();
+  }
+
+  render(){
+    
+
+    return (
+      <div className="App">
+        <header className="App-header">
+          <img src={logo} className="App-logo" alt="logo" />
+          <p>
+           <code>state:{JSON.stringify(this.state)}</code>
+          </p>
+         
+        </header>
+      </div>
+    );
+  }
+
+
+};
+
+export const mapStateToProps = state => ({
+	...state
+	
+});
+export const mapDispatchToProps = (dispatch) => ({
+  // errorsClean: (payload) => dispatch(errorsClean(payload)),
+  fetchData: (payload) => dispatch(fetchData(payload)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
