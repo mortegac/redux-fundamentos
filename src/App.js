@@ -18,14 +18,14 @@ export class App extends Component {
 
   render(){
     
+    const {users } = this.props;
 
     return (
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <p>
-           <code>state:{JSON.stringify(this.state)}</code>
-          </p>
+           <pre>state:{JSON.stringify(users.list[0], undefined, 2)}</pre>
+
          
         </header>
       </div>
@@ -36,7 +36,7 @@ export class App extends Component {
 };
 
 export const mapStateToProps = state => ({
-	...state
+	users: state.users,
 	
 });
 export const mapDispatchToProps = (dispatch) => ({

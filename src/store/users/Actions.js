@@ -1,5 +1,5 @@
 import * as types from './Constants';
-// import * as common from '../rootActions';
+import axios from 'axios';
 import * as common from '../errors/Actions';
 
 const apiUrl = 'http://jsonplaceholder.typicode.com/users';
@@ -19,20 +19,41 @@ export const usersAdd = payload => ({
 // 	payload
 // });
 
+// static fetchApi = async (url, params) =>{
+    
+//     request = new Request(`${url}`, params);    
+//     return await fetch(request)
+//     .then(data => {
+//       if (data.status===401){
+//         //console.log(`%c ::: ERROR TOKEN ::: ${data.status}`, 'background: blue; color: #fff');
+//         store.dispatch(isValidtoken({isValidToken: true}))
+//       }else{
+
+//       }
+//       return  data;
+//     })
+//     .catch(err => { return err })
+//   }
 
 // THUNK 
 export const fetchData = () => {
 	return async (dispatch) => {
-		dispatch(usersClean());
+		dispatch(usersClean())
+		// dispatch(common.errorsClean({}))// 
 		try{
-		  const result = await fetch(apiUrl);
-		  const json = await(result.json);
-		  console.log('<json>', json)
 
-		  dispatch(usersAdd(json));
+			
+
+			// throw "this is not an error"
+			const response = await axios.get(`${apiUrl}`);
+							
+				dispatch(usersAdd(response.data));
+					
+			throw "this is not an error"
   
 		} catch(e){
-			dispatch(common.errorsAdd(e));
+			// const error =e.toString();
+			dispatch(common.errorsAdd({error:e, module:'users'}));
 		}
   
 	};

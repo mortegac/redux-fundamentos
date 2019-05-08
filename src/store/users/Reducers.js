@@ -22,4 +22,4 @@ const users = (state = initialState, action = {}) => {
 	}
 };
 
-export default users;
+export default {users};
