@@ -14,6 +14,11 @@ export const usersAdd = payload => ({
 	type: types.USERS_ADD,
 	payload
 });
+export const usersFilter = payload => ({
+	type: types.USER_FILTER,
+	payload
+});
+
 // export const errorsAdd = payload => ({
 // 	type: common.ERRORS_ADD,
 // 	payload
@@ -48,8 +53,8 @@ export const fetchData = () => {
 			const response = await axios.get(`${apiUrl}`);
 							
 				dispatch(usersAdd(response.data));
-					
-			throw "this is not an error"
+				dispatch(usersFilter(response.data));
+			// throw "this is not an error"
   
 		} catch(e){
 			// const error =e.toString();
