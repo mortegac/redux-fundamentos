@@ -28,12 +28,13 @@ const users = (state = initialState, action = {}) => {
 			...state, 
 			list:{ ...matches }
 		};
-		  // const data = list.filter (function (x) { 
-	// 	return x.faction === "Rebels"; 
-	//   });
-	// return {
-	// 	...state,
-	// }
+		
+		// const data = list.filter (function (x) { 
+		// 	return x.faction === "Rebels"; 
+		//   });
+		// return {
+		// 	...state,
+		// }
 	
 	default: return state;
 	}

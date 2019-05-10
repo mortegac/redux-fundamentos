@@ -4,16 +4,15 @@ import { connect } from 'react-redux';
 import logo from './logo.svg';
 import './App.css';
 
-// import { errorsClean, fetchData } from './store/errors/Actions';
-import { fetchData } from './store/users/Actions';
+// import { fetchData } from './store/users/Actions';
 
 
 export class App extends Component {
 	constructor(props) {
     super(props);
-    const {fetchData } = this.props;
+    // const {fetchData } = this.props;
     
-    fetchData();
+    // fetchData();
   }
 
   render(){
@@ -40,8 +39,7 @@ export const mapStateToProps = state => ({
 	
 });
 export const mapDispatchToProps = (dispatch) => ({
-  // errorsClean: (payload) => dispatch(errorsClean(payload)),
-  fetchData: (payload) => dispatch(fetchData(payload)),
+  // fetchData: (payload) => dispatch(fetchData(payload)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

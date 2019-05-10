@@ -19,37 +19,16 @@ export const usersFilter = payload => ({
 	payload
 });
 
-// export const errorsAdd = payload => ({
-// 	type: common.ERRORS_ADD,
-// 	payload
-// });
-
-// static fetchApi = async (url, params) =>{
-    
-//     request = new Request(`${url}`, params);    
-//     return await fetch(request)
-//     .then(data => {
-//       if (data.status===401){
-//         //console.log(`%c ::: ERROR TOKEN ::: ${data.status}`, 'background: blue; color: #fff');
-//         store.dispatch(isValidtoken({isValidToken: true}))
-//       }else{
-
-//       }
-//       return  data;
-//     })
-//     .catch(err => { return err })
-//   }
 
 // THUNK 
 export const fetchData = () => {
 	return async (dispatch) => {
-		dispatch(usersClean())
-		// dispatch(common.errorsClean({}))// 
+		dispatch(usersClean()) 
 		try{
 
 			
 
-			// throw "this is not an error"
+			
 			const response = await axios.get(`${apiUrl}`);
 							
 				dispatch(usersAdd(response.data));
@@ -57,7 +36,6 @@ export const fetchData = () => {
 			// throw "this is not an error"
   
 		} catch(e){
-			// const error =e.toString();
 			dispatch(common.errorsAdd({error:e, module:'users'}));
 		}
   
